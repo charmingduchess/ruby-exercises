@@ -1,11 +1,4 @@
-#create cypher that shifts letters by number argument
-
-#split string into array of letters
-#loop thru, change to int, add num, change back to letter=>integer.chr
-#join
-
-#if its between 65-90, add to 65 and modulo that 26 and add to
-
+#This program takes a string (string) and an integer (num) and prints the string as with the characters shifted by num letters. 
 
 def cypher(string,num)
     nums = string.codepoints.map do |c|
@@ -19,4 +12,4 @@ end.join()
     p nums
 end
 
-cypher("What a string!", 5)
+cypher("Shift that STRING!", 5)
