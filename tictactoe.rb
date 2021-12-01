@@ -1,6 +1,8 @@
 # lols
+
 class Game
   attr_accessor :turns, :game_completed, :play_again
+
   def initialize
     @board = [['_','_','_'], ['_','_','_'], ['_','_','_']]
     @turns = 0
@@ -13,9 +15,12 @@ class Game
   def update(square)
     row = (square-1)/3
     col = square%3-1
+    if @board[row][col] == "_"
     @board[row][col] = @whos_turn ? "O" : "X"
     check_for_victory()
     @whos_turn = !@whos_turn
+    else turn(true)
+    end
   end
 
   def check_for_victory
@@ -45,7 +50,10 @@ class Game
     end
   end
 
-  def turn
+  def turn(again)
+    if again 
+      puts "Cell already played."
+    end
     puts "It's #{@whos_turn ? '0' : 'X'}'s turn. Please input which square you would like to play"
     print_board
     move = gets.chomp.to_i
@@ -71,7 +79,7 @@ def play()
   game = Game.new
   until game.game_completed 
     if game.turns < 9 
-      game.turn
+      game.turn(false)
     end
   end
   if game.play_again
